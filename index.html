@@ -17,31 +17,55 @@
         <nav class="nav container">
             <div class="nav__brand">
                 <div class="nav__logo">
-                    <img src="assets/logo.png" alt="My Healthy Health Logo" class="nav__logo-img">
+                    <img src="Logo.jpg" alt="My Healthy Health Logo" class="nav__logo-img">
                 </div>
                 <span class="nav__brand-text">My Healthy Health</span>
             </div>
             
-            <ul class="nav__menu" id="nav-menu">
-                <li class="nav__item">
-                    <a href="#home" class="nav__link active">Home</a>
-                </li>
-                <li class="nav__item">
-                    <a href="#about" class="nav__link">About</a>
-                </li>
-                <li class="nav__item">
-                    <a href="#blog" class="nav__link">Blog</a>
-                </li>
-                <li class="nav__item">
-                    <a href="#products" class="nav__link">Products</a>
-                </li>
-                <li class="nav__item">
-                    <a href="#contact" class="nav__link">Contact</a>
-                </li>
-            </ul>
-
-            <div class="nav__toggle" id="nav-toggle">
-                <i class="fas fa-bars"></i>
+            <!-- Update your existing navigation section -->
+            <div class="nav__menu" id="nav-menu">
+              <a href="#home" class="nav__link active">Home</a>
+              <a href="#about" class="nav__link">About</a>
+              <a href="#services" class="nav__link">Services</a>
+              <a href="#contact" class="nav__link">Contact</a>
+              
+              <!-- Auth links (shown when NOT logged in) -->
+              <div class="auth-links">
+                <a href="login.html" class="nav__link nav__link--auth">Login</a>
+                <a href="register.html" class="btn btn--primary nav__auth-btn">Sign Up</a>
+              </div>
+              
+              <!-- User menu (shown when logged in) -->
+              <div class="user-menu" style="display: none;">
+                <div class="user-menu__trigger" onclick="toggleUserMenu()">
+                  <div class="user-menu__avatar" id="userAvatar"></div>
+                  <span class="user-menu__name" id="userName"></span>
+                  <i class="fas fa-chevron-down"></i>
+                </div>
+                
+                <!-- Update the user menu dropdown section -->
+                <div class="user-menu__dropdown" id="user-dropdown">
+                  <a href="admin-dashboard.html" class="user-menu__item admin-only" style="display: none;">
+                    <i class="fas fa-tachometer-alt"></i> Admin Dashboard
+                  </a>
+                  <a href="articles.html" class="user-menu__item">
+                    <i class="fas fa-newspaper"></i> Articles
+                  </a>
+                  <a href="#profile" class="user-menu__item">
+                    <i class="fas fa-user"></i> My Profile
+                  </a>
+                  <a href="#goals" class="user-menu__item">
+                    <i class="fas fa-bullseye"></i> Health Goals
+                  </a>
+                  <a href="#progress" class="user-menu__item">
+                    <i class="fas fa-chart-line"></i> My Progress
+                  </a>
+                  <div class="user-menu__divider"></div>
+                  <a href="#" class="user-menu__item" onclick="handleLogout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                  </a>
+                </div>
+              </div>
             </div>
         </nav>
     </header>
@@ -294,6 +318,7 @@
         </div>
     </footer>
 
+    <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - My Healthy Health</title>
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
+<body>
+    <div class="auth-nav">
+        <a href="index.html">← Back to Home</a>
+    </div>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2>Welcome Back!</h2>
+                <p>Sign in to your healthy journey</p>
+            </div>
+
+            <form class="auth-form" id="loginForm">
+                <div class="alert alert-error" id="errorAlert"></div>
+                <div class="alert alert-success" id="successAlert"></div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+
+                <button type="submit" class="auth-btn" id="loginBtn">
+                    Sign In
+                </button>
+
+                <div class="auth-switch">
+                    Don't have an account? 
+                    <a href="register.html">Create one here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

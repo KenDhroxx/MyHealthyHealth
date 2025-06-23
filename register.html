@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - My Healthy Health</title>
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
+<body>
+    <div class="auth-nav">
+        <a href="index.html">← Back to Home</a>
+    </div>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2>Join My Healthy Health</h2>
+                <p>Start your wellness journey today</p>
+            </div>
+
+            <form class="auth-form" id="registerForm">
+                <div class="alert alert-error" id="errorAlert"></div>
+                <div class="alert alert-success" id="successAlert"></div>
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                    <div class="error-message" id="nameError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required minlength="6">
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <div class="error-message" id="confirmPasswordError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Health Goals (Optional)</label>
+                    <div class="health-goals">
+                        <div class="goal-item">
+                            <input type="checkbox" id="weight_loss" name="healthGoals" value="weight_loss">
+                            <label for="weight_loss">Weight Loss</label>
+                        </div>
+                        <div class="goal-item">
+                            <input type="checkbox" id="muscle_gain" name="healthGoals" value="muscle_gain">
+                            <label for="muscle_gain">Muscle Gain</label>
+                        </div>
+                        <div class="goal-item">
+                            <input type="checkbox" id="general_fitness" name="healthGoals" value="general_fitness">
+                            <label for="general_fitness">General Fitness</label>
+                        </div>
+                        <div class="goal-item">
+                            <input type="checkbox" id="mental_health" name="healthGoals" value="mental_health">
+                            <label for="mental_health">Mental Health</label>
+                        </div>
+                        <div class="goal-item">
+                            <input type="checkbox" id="nutrition" name="healthGoals" value="nutrition">
+                            <label for="nutrition">Nutrition</label>
+                        </div>
+                        <div class="goal-item">
+                            <input type="checkbox" id="sleep_improvement" name="healthGoals" value="sleep_improvement">
+                            <label for="sleep_improvement">Better Sleep</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="auth-btn" id="registerBtn">
+                    Create Account
+                </button>
+
+                <div class="auth-switch">
+                    Already have an account? 
+                    <a href="login.html">Sign in here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

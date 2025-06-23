@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - My Healthy Health</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__brand">
+                <div class="nav__logo">
+                    <img src="images/logo.png" alt="My Healthy Health Logo" class="nav__logo-img">
+                </div>
+                <span class="nav__brand-text">Admin Dashboard</span>
+            </div>
+            
+            <div class="nav__menu">
+                <a href="index.html" class="nav__link">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <div class="user-menu">
+                    <div class="user-menu__trigger" onclick="toggleUserMenu()">
+                        <div class="user-menu__avatar" id="userAvatar"></div>
+                        <span class="user-menu__name" id="userName"></span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    
+                    <div class="user-menu__dropdown" id="user-dropdown">
+                        <a href="#" class="user-menu__item" onclick="handleLogout()">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <section class="hero" style="padding: calc(80px + 2rem) 0 2rem;">
+            <div class="container">
+                <h1><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h1>
+                <p>Welcome to the admin panel! Article creation and management coming soon.</p>
+                
+                <div style="margin-top: 2rem;">
+                    <button class="btn btn--primary" disabled>
+                        <i class="fas fa-plus"></i> Create Article (Coming Soon)
+                    </button>
+                    <a href="index.html" class="btn btn--secondary">Back to Home</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/auth.js"></script>
+    <script>
+        // Check if user is admin
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = JSON.parse(localStorage.getItem('user') || '{}');
+            const token = localStorage.getItem('token');
+            
+            if (!token || user.role !== 'admin') {
+                alert('Access denied. Admin privileges required.');
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>

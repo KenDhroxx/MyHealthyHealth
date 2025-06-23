@@ -1,0 +1,29 @@
+{
+  "name": "mongodb-auth-website",
+  "version": "1.0.0",
+  "description": "A website with login features using MongoDB for authentication.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9",
+    "jsonwebtoken": "^8.5.1",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "keywords": [
+    "mongodb",
+    "authentication",
+    "express",
+    "website"
+  ],
+  "author": "Your Name",
+  "license": "ISC"
+}
