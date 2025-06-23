@@ -10,10 +10,13 @@ const router = express.Router();
 // @access  Public
 router.post('/register', async (req, res) => {
   try {
-    const { fullName, email, password } = req.body;
+    const { fullName, name, email, password } = req.body;
+    
+    // Use fullName if provided, otherwise use name
+    const userName = fullName || name;
 
     // Validation
-    if (!fullName || !email || !password) {
+    if (!userName || !email || !password) {
       return res.status(400).json({
         success: false,
         message: 'Please provide all required fields'
@@ -38,7 +41,7 @@ router.post('/register', async (req, res) => {
 
     // Create user
     const user = await User.create({
-      fullName,
+      name: userName, // Use the name field in the model
       email,
       password
     });
@@ -56,7 +59,7 @@ router.post('/register', async (req, res) => {
       token,
       user: {
         id: user._id,
-        fullName: user.fullName,
+        name: user.name, // Return as name
         email: user.email,
         role: user.role
       }
@@ -86,8 +89,8 @@ router.post('/login', async (req, res) => {
       });
     }
 
-    // Check for user
-    const user = await User.findOne({ email });
+    // Check for user (include password since it's select: false)
+    const user = await User.findOne({ email }).select('+password');
     if (!user) {
       return res.status(401).json({
         success: false,
@@ -117,7 +120,7 @@ router.post('/login', async (req, res) => {
       token,
       user: {
         id: user._id,
-        fullName: user.fullName,
+        name: user.name, // Return as name
         email: user.email,
         role: user.role
       }

@@ -28,107 +28,47 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// Serve static files from parent directory
-app.use(express.static(path.join(__dirname, '..')));
-
 console.log('✅ Middleware configured');
 
 // Database connection
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/myhealthyhealth', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('✅ MongoDB Atlas Connected Successfully'))
-.catch(err => console.error('❌ MongoDB Atlas Connection Error:', err));
+.then(() => console.log('✅ MongoDB Connected Successfully'))
+.catch(err => console.error('❌ MongoDB Connection Error:', err));
 
 // Request logging middleware
 app.use((req, res, next) => {
   console.log(`📨 ${req.method} ${req.originalUrl}`);
+  if (req.body && Object.keys(req.body).length > 0) {
+    console.log('Request body:', req.body);
+  }
   next();
 });
 
-// AUTH ROUTES
-app.post('/api/auth/login', async (req, res) => {
-  console.log('🔑 Login endpoint hit');
-  console.log('Request body:', req.body);
-  
-  try {
-    const { email, password } = req.body;
-    
-    if (!email || !password) {
-      return res.status(400).json({
-        success: false,
-        message: 'Please provide email and password'
-      });
-    }
-    
-    // For testing - return success
-    res.status(200).json({
-      success: true,
-      message: 'Login successful (test mode)',
-      user: {
-        email: email,
-        fullName: 'Test User'
-      },
-      token: 'test-token-123'
-    });
-    
-  } catch (error) {
-    console.error('Login error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Server error during login'
-    });
-  }
-});
-
-app.post('/api/auth/register', async (req, res) => {
-  console.log('📝 Register endpoint hit');
-  console.log('Request body:', req.body);
-  
-  try {
-    const { email, password, fullName } = req.body;
-    
-    if (!email || !password || !fullName) {
-      return res.status(400).json({
-        success: false,
-        message: 'Please provide all required fields'
-      });
-    }
-    
-    // For testing - return success
-    res.status(201).json({
-      success: true,
-      message: 'Registration successful (test mode)',
-      user: {
-        email: email,
-        fullName: fullName
-      },
-      token: 'test-token-123'
-    });
-    
-  } catch (error) {
-    console.error('Register error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Server error during registration'
-    });
-  }
-});
-
-// Health check
+// Health check - MUST be before other routes
 app.get('/api/health', (req, res) => {
-  res.json({ 
+  console.log('🩺 Health check requested');
+  res.status(200).json({ 
     status: 'Server is running!', 
     database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
     timestamp: new Date().toISOString(),
-    availableRoutes: [
-      'GET /api/health',
-      'POST /api/auth/login',
-      'POST /api/auth/register'
-    ]
+    port: process.env.PORT || 5000
   });
 });
+
+// Import and use routes
+try {
+  const authRoutes = require('./routes/authRoutes');
+  app.use('/api/auth', authRoutes);
+  console.log('✅ Auth routes loaded');
+} catch (error) {
+  console.error('❌ Error loading auth routes:', error.message);
+}
+
+// Serve static files
+app.use(express.static(path.join(__dirname, '..')));
 
 // HTML routes
 app.get('/', (req, res) => {
@@ -153,11 +93,21 @@ app.use('*', (req, res) => {
   });
 });
 
+// Error handler
+app.use((error, req, res, next) => {
+  console.error('❌ Server error:', error);
+  res.status(500).json({
+    success: false,
+    message: 'Internal server error',
+    error: process.env.NODE_ENV === 'development' ? error.message : undefined
+  });
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`🩺 Health check: http://localhost:${PORT}/api/health`);
   console.log(`📱 Login: http://localhost:${PORT}/login.html`);
   console.log(`📝 Register: http://localhost:${PORT}/register.html`);
-  console.log(`🔍 Health: http://localhost:${PORT}/api/health`);
 });

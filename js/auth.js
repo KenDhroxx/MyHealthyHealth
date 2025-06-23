@@ -324,12 +324,11 @@ async function login(email, password) {
         });
 
         console.log('📥 Response status:', response.status);
-        console.log('📥 Response headers:', response.headers);
         
         if (!response.ok) {
-            const errorText = await response.text();
-            console.error('❌ Server error response:', errorText);
-            throw new Error(`HTTP ${response.status}: ${errorText}`);
+            const errorData = await response.json();
+            console.error('❌ Server error response:', errorData);
+            throw new Error(errorData.message || `HTTP ${response.status}`);
         }
         
         const data = await response.json();
@@ -337,12 +336,8 @@ async function login(email, password) {
         
         if (data.success) {
             // Store auth data
-            if (data.token) {
-                localStorage.setItem('authToken', data.token);
-            }
-            if (data.user) {
-                localStorage.setItem('user', JSON.stringify(data.user));
-            }
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
             return { success: true, data: data };
         } else {
             return { success: false, message: data.message || 'Login failed' };
@@ -352,7 +347,7 @@ async function login(email, password) {
         console.error('❌ Login error:', error);
         return { 
             success: false, 
-            message: `Network error: ${error.message}` 
+            message: error.message || 'Network error occurred'
         };
     }
 }
@@ -378,15 +373,18 @@ async function register(email, password, fullName) {
         console.log('📥 Response status:', response.status);
         
         if (!response.ok) {
-            const errorText = await response.text();
-            console.error('❌ Server error response:', errorText);
-            throw new Error(`HTTP ${response.status}: ${errorText}`);
+            const errorData = await response.json();
+            console.error('❌ Server error response:', errorData);
+            throw new Error(errorData.message || `HTTP ${response.status}`);
         }
         
         const data = await response.json();
         console.log('✅ Register response data:', data);
         
         if (data.success) {
+            // Store auth data
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
             return { success: true, data: data };
         } else {
             return { success: false, message: data.message || 'Registration failed' };
@@ -396,7 +394,7 @@ async function register(email, password, fullName) {
         console.error('❌ Register error:', error);
         return { 
             success: false, 
-            message: `Network error: ${error.message}` 
+            message: error.message || 'Network error occurred'
         };
     }
 }
