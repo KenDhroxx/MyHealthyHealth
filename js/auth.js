@@ -1,9 +1,9 @@
 // Authentication JavaScript for My Healthy Health
 
 // Update the API base URL - try both options
-const API_BASE_URL = 'http://localhost:5000/api';
-// If that doesn't work, try:
-// const API_BASE_URL = 'http://127.0.0.1:5000/api';
+const API_BASE_URL = `${window.location.protocol}//${window.location.host}/api`;
+
+console.log('🔍 API Base URL:', API_BASE_URL);
 
 // Navigation management
 function updateNavigation() {
@@ -303,6 +303,118 @@ async function handleRegister(event) {
     } finally {
         setLoading('registerBtn', false);
     }
+}
+
+// Login function
+async function login(email, password) {
+    console.log('🔄 Login function called with email:', email);
+    console.log('📍 Request URL:', `${API_BASE_URL}/auth/login`);
+    
+    try {
+        const response = await fetch(`${API_BASE_URL}/auth/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        });
+
+        console.log('📥 Response status:', response.status);
+        console.log('📥 Response headers:', response.headers);
+        
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('❌ Server error response:', errorText);
+            throw new Error(`HTTP ${response.status}: ${errorText}`);
+        }
+        
+        const data = await response.json();
+        console.log('✅ Login response data:', data);
+        
+        if (data.success) {
+            // Store auth data
+            if (data.token) {
+                localStorage.setItem('authToken', data.token);
+            }
+            if (data.user) {
+                localStorage.setItem('user', JSON.stringify(data.user));
+            }
+            return { success: true, data: data };
+        } else {
+            return { success: false, message: data.message || 'Login failed' };
+        }
+        
+    } catch (error) {
+        console.error('❌ Login error:', error);
+        return { 
+            success: false, 
+            message: `Network error: ${error.message}` 
+        };
+    }
+}
+
+async function register(email, password, fullName) {
+    console.log('🔄 Register function called');
+    console.log('📍 Request URL:', `${API_BASE_URL}/auth/register`);
+    
+    try {
+        const response = await fetch(`${API_BASE_URL}/auth/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                fullName: fullName
+            })
+        });
+
+        console.log('📥 Response status:', response.status);
+        
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('❌ Server error response:', errorText);
+            throw new Error(`HTTP ${response.status}: ${errorText}`);
+        }
+        
+        const data = await response.json();
+        console.log('✅ Register response data:', data);
+        
+        if (data.success) {
+            return { success: true, data: data };
+        } else {
+            return { success: false, message: data.message || 'Registration failed' };
+        }
+        
+    } catch (error) {
+        console.error('❌ Register error:', error);
+        return { 
+            success: false, 
+            message: `Network error: ${error.message}` 
+        };
+    }
+}
+
+// Auth utilities
+function logout() {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('user');
+    window.location.href = '/login.html';
+}
+
+function isLoggedIn() {
+    return localStorage.getItem('authToken') !== null;
+}
+
+function getCurrentUser() {
+    const userStr = localStorage.getItem('user');
+    return userStr ? JSON.parse(userStr) : null;
 }
 
 // Initialize forms when page loads
