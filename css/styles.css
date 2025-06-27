@@ -538,7 +538,7 @@ ul {
   justify-content: center;
   margin: 0 auto var(--spacing-xl);
   font-size: var(--fs-3xl);
-  color: var(--white);
+  color: #2d7d32;
   box-shadow: var(--shadow-lg);
 }
 
