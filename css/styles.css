@@ -1027,3 +1027,211 @@ main {
 .footer__legal {
   margin-bottom: 0;
 }
+
+/* ===== MOBILE OPTIMIZATION ===== */
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  .nav__menu {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background: var(--white);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 2rem 0;
+    transition: left 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+
+  .nav__menu.show-menu {
+    left: 0;
+  }
+
+  .nav__link {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+  }
+
+  .nav__toggle {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}
+
+/* Hero Section Mobile */
+@media (max-width: 768px) {
+  .hero__container {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .hero__content {
+    order: 2;
+  }
+
+  .hero__image {
+    order: 1;
+  }
+
+  .hero__title {
+    font-size: var(--fs-4xl);
+    line-height: 1.2;
+  }
+
+  .hero__description {
+    font-size: var(--fs-base);
+    margin: 1.5rem 0;
+  }
+
+  .hero__buttons {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .hero__buttons .btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+/* Features Section Mobile */
+@media (max-width: 768px) {
+  .features__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .feature__card {
+    padding: 2rem 1.5rem;
+  }
+
+  .feature__icon {
+    font-size: 2.5rem;
+  }
+}
+
+/* Newsletter Mobile */
+@media (max-width: 768px) {
+  .newsletter__form .form__group {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .newsletter__form .form__input {
+    width: 100%;
+  }
+
+  .newsletter__form .btn {
+    width: 100%;
+  }
+}
+
+/* Footer Mobile */
+@media (max-width: 768px) {
+  .footer__content {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .footer__section {
+    flex: none;
+    width: 100%;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .footer__social {
+    justify-content: center;
+  }
+}
+
+/* Container Mobile */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .section__title {
+    font-size: var(--fs-3xl);
+  }
+
+  .section__subtitle {
+    font-size: var(--fs-base);
+  }
+}
+
+/* Resources Preview Mobile */
+@media (max-width: 768px) {
+  .coming-soon__card {
+    padding: 2rem 1.5rem;
+  }
+
+  .coming-soon__features {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* Blog Preview Mobile */
+@media (max-width: 768px) {
+  .blog__cta {
+    text-align: center;
+  }
+}
+
+/* Tablet Optimization */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .hero__container {
+    gap: 3rem;
+  }
+
+  .features__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .footer__content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Small Mobile (320px) */
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: var(--fs-3xl);
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: var(--fs-sm);
+  }
+
+  .feature__card {
+    padding: 1.5rem 1rem;
+  }
+
+  .footer__brand-text {
+    font-size: var(--fs-xl);
+  }
+}
+
+/* Ensure mobile menu toggle is hidden on desktop */
+@media (min-width: 769px) {
+  .nav__toggle {
+    display: none;
+  }
+}
