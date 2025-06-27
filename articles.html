@@ -13,7 +13,7 @@
         <nav class="nav container">
             <div class="nav__brand">
                 <div class="nav__logo">
-                    <img src="images/logo.png" alt="My Healthy Health Logo" class="nav__logo-img">
+                    <img src="Logo.jpg" alt="My Healthy Health Logo" class="nav__logo-img">
                 </div>
                 <span class="nav__brand-text">My Healthy Health</span>
             </div>
@@ -21,36 +21,8 @@
             <div class="nav__menu" id="nav-menu">
                 <a href="index.html" class="nav__link">Home</a>
                 <a href="articles.html" class="nav__link active">Articles</a>
-                <a href="#about" class="nav__link">About</a>
-                <a href="#contact" class="nav__link">Contact</a>
-                
-                <!-- Auth links (shown when NOT logged in) -->
-                <div class="auth-links">
-                    <a href="login.html" class="nav__link nav__link--auth">Login</a>
-                    <a href="register.html" class="btn btn--primary nav__auth-btn">Sign Up</a>
-                </div>
-                
-                <!-- User menu (shown when logged in) -->
-                <div class="user-menu" style="display: none;">
-                    <div class="user-menu__trigger" onclick="toggleUserMenu()">
-                        <div class="user-menu__avatar" id="userAvatar"></div>
-                        <span class="user-menu__name" id="userName"></span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    
-                    <div class="user-menu__dropdown" id="user-dropdown">
-                        <a href="admin-dashboard.html" class="user-menu__item admin-only" style="display: none;">
-                            <i class="fas fa-tachometer-alt"></i> Admin Dashboard
-                        </a>
-                        <a href="#profile" class="user-menu__item">
-                            <i class="fas fa-user"></i> My Profile
-                        </a>
-                        <div class="user-menu__divider"></div>
-                        <a href="#" class="user-menu__item" onclick="handleLogout()">
-                            <i class="fas fa-sign-out-alt"></i> Logout
-                        </a>
-                    </div>
-                </div>
+                <a href="index.html#about" class="nav__link">About</a>
+                <a href="index.html#contact" class="nav__link">Contact</a>
             </div>
             
             <div class="nav__toggle" id="nav-toggle">
@@ -63,8 +35,8 @@
     <main class="main">
         <section class="hero" style="padding: calc(80px + 2rem) 0 2rem;">
             <div class="container">
-                <h1>Health Articles</h1>
-                <p>Coming soon - Expert health articles and user comments!</p>
+                <h1 class="section__title">Health Articles</h1>
+                <p class="section__subtitle">Coming soon - Expert health articles and wellness insights!</p>
                 
                 <div style="margin-top: 2rem;">
                     <a href="index.html" class="btn btn--primary">Back to Home</a>
@@ -73,8 +45,76 @@
         </section>
     </main>
 
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <div class="footer__brand">
+                        <div class="footer__logo">
+                            <img src="Logo.jpg" alt="My Healthy Health Logo" class="footer__logo-img">
+                        </div>
+                        <h3 class="footer__brand-text">My Healthy Health</h3>
+                        <p class="footer__description">Empowering your journey to optimal health with premium insights and carefully curated wellness solutions.</p>
+                    </div>
+                </div>
+                
+                <div class="footer__section">
+                    <h4 class="footer__title">Quick Links</h4>
+                    <ul class="footer__links">
+                        <li><a href="index.html#about" class="footer__link">About Us</a></li>
+                        <li><a href="index.html#blog" class="footer__link">Health Blog</a></li>
+                        <li><a href="index.html#resources" class="footer__link">Resources</a></li>
+                        <li><a href="index.html#contact" class="footer__link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__section">
+                    <h4 class="footer__title">Categories</h4>
+                    <ul class="footer__links">
+                        <li><a href="#" class="footer__link">Nutrition</a></li>
+                        <li><a href="#" class="footer__link">Mental Health</a></li>
+                        <li><a href="#" class="footer__link">Fitness</a></li>
+                        <li><a href="#" class="footer__link">Lifestyle</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__section">
+                    <h4 class="footer__title">Connect With Us</h4>
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="footer__social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="footer__social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="footer__social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                    <div class="footer__contact">
+                        <p class="footer__contact-item">
+                            <i class="fas fa-envelope"></i>
+                            hello@myhealthyhealth.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2024 My Healthy Health. All rights reserved.</p>
+                <div class="footer__legal">
+                    <a href="#" class="footer__legal-link">Privacy Policy</a>
+                    <a href="#" class="footer__legal-link">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <!-- Scripts -->
-    <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

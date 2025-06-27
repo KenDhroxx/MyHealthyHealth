@@ -22,50 +22,15 @@
                 <span class="nav__brand-text">My Healthy Health</span>
             </div>
             
-            <!-- Update your existing navigation section -->
             <div class="nav__menu" id="nav-menu">
-              <a href="#home" class="nav__link active">Home</a>
-              <a href="#about" class="nav__link">About</a>
-              <a href="#services" class="nav__link">Services</a>
-              <a href="#contact" class="nav__link">Contact</a>
-              
-              <!-- Auth links (shown when NOT logged in) -->
-              <div class="auth-links">
-                <a href="login.html" class="nav__link nav__link--auth">Login</a>
-                <a href="register.html" class="btn btn--primary nav__auth-btn">Sign Up</a>
-              </div>
-              
-              <!-- User menu (shown when logged in) -->
-              <div class="user-menu" style="display: none;">
-                <div class="user-menu__trigger" onclick="toggleUserMenu()">
-                  <div class="user-menu__avatar" id="userAvatar"></div>
-                  <span class="user-menu__name" id="userName"></span>
-                  <i class="fas fa-chevron-down"></i>
-                </div>
-                
-                <!-- Update the user menu dropdown section -->
-                <div class="user-menu__dropdown" id="user-dropdown">
-                  <a href="admin-dashboard.html" class="user-menu__item admin-only" style="display: none;">
-                    <i class="fas fa-tachometer-alt"></i> Admin Dashboard
-                  </a>
-                  <a href="articles.html" class="user-menu__item">
-                    <i class="fas fa-newspaper"></i> Articles
-                  </a>
-                  <a href="#profile" class="user-menu__item">
-                    <i class="fas fa-user"></i> My Profile
-                  </a>
-                  <a href="#goals" class="user-menu__item">
-                    <i class="fas fa-bullseye"></i> Health Goals
-                  </a>
-                  <a href="#progress" class="user-menu__item">
-                    <i class="fas fa-chart-line"></i> My Progress
-                  </a>
-                  <div class="user-menu__divider"></div>
-                  <a href="#" class="user-menu__item" onclick="handleLogout()">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                  </a>
-                </div>
-              </div>
+                <a href="#home" class="nav__link active">Home</a>
+                <a href="#about" class="nav__link">About</a>
+                <a href="articles.html" class="nav__link">Articles</a>
+                <a href="#contact" class="nav__link">Contact</a>
+            </div>
+            
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
             </div>
         </nav>
     </header>
@@ -120,8 +85,8 @@
                         <div class="feature__icon">
                             <i class="fas fa-award"></i>
                         </div>
-                        <h3 class="feature__title">Premium Quality Products</h3>
-                        <p class="feature__description">Carefully curated health products that meet the highest standards of quality and effectiveness.</p>
+                        <h3 class="feature__title">Premium Quality Resources</h3>
+                        <p class="feature__description">Carefully curated health information and resources that meet the highest standards of quality and effectiveness.</p>
                     </div>
                     
                     <div class="feature__card">
@@ -143,65 +108,18 @@
                     <p class="section__subtitle">Stay informed with our latest research-backed wellness articles</p>
                 </div>
                 
-                <div class="blog__grid">
-                    <article class="blog__card">
-                        <div class="blog__image">
-                            <img src="assets/blog-1.jpg" alt="Nutrition tips" class="blog__img">
-                            <div class="blog__category">Nutrition</div>
-                        </div>
-                        <div class="blog__content">
-                            <h3 class="blog__title">10 Science-Backed Superfoods for Optimal Health</h3>
-                            <p class="blog__excerpt">Discover the nutritional powerhouses that can transform your health and boost your energy levels naturally.</p>
-                            <div class="blog__meta">
-                                <span class="blog__date">March 15, 2024</span>
-                                <span class="blog__read-time">5 min read</span>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <article class="blog__card">
-                        <div class="blog__image">
-                            <img src="assets/blog-2.jpg" alt="Mental wellness" class="blog__img">
-                            <div class="blog__category">Mental Health</div>
-                        </div>
-                        <div class="blog__content">
-                            <h3 class="blog__title">Mindfulness Practices for Stress-Free Living</h3>
-                            <p class="blog__excerpt">Learn effective mindfulness techniques that reduce stress and improve your overall mental wellbeing.</p>
-                            <div class="blog__meta">
-                                <span class="blog__date">March 12, 2024</span>
-                                <span class="blog__read-time">7 min read</span>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <article class="blog__card">
-                        <div class="blog__image">
-                            <img src="assets/blog-3.jpg" alt="Fitness routine" class="blog__img">
-                            <div class="blog__category">Fitness</div>
-                        </div>
-                        <div class="blog__content">
-                            <h3 class="blog__title">Building Sustainable Fitness Habits</h3>
-                            <p class="blog__excerpt">Create a workout routine that fits your lifestyle and helps you achieve long-term fitness goals.</p>
-                            <div class="blog__meta">
-                                <span class="blog__date">March 10, 2024</span>
-                                <span class="blog__read-time">6 min read</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                
                 <div class="blog__cta">
-                    <a href="blog.html" class="btn btn--outline">View All Articles</a>
+                    <a href="articles.html" class="btn btn--outline">View All Articles</a>
                 </div>
             </div>
         </section>
 
-        <!-- Products Preview -->
-        <section class="products-preview" id="products">
+        <!-- Resources Preview -->
+        <section class="products-preview" id="resources">
             <div class="container">
                 <div class="section__header">
-                    <h2 class="section__title">Premium Health Products</h2>
-                    <p class="section__subtitle">Coming soon - Carefully selected products for your wellness journey</p>
+                    <h2 class="section__title">Premium Health Resources</h2>
+                    <p class="section__subtitle">Coming soon - Carefully curated resources for your wellness journey</p>
                 </div>
                 
                 <div class="products__coming-soon">
@@ -209,12 +127,12 @@
                         <div class="coming-soon__icon">
                             <i class="fas fa-leaf"></i>
                         </div>
-                        <h3 class="coming-soon__title">Curated Wellness Products</h3>
-                        <p class="coming-soon__description">We're carefully selecting premium health and wellness products that align with our quality standards. Stay tuned for our product launch!</p>
+                        <h3 class="coming-soon__title">Curated Wellness Resources</h3>
+                        <p class="coming-soon__description">We're carefully selecting premium health and wellness resources that align with our quality standards. Stay tuned for our resource library!</p>
                         <div class="coming-soon__features">
                             <div class="feature-item">
                                 <i class="fas fa-check"></i>
-                                <span>Expert-reviewed selections</span>
+                                <span>Expert-reviewed content</span>
                             </div>
                             <div class="feature-item">
                                 <i class="fas fa-check"></i>
@@ -222,7 +140,7 @@
                             </div>
                             <div class="feature-item">
                                 <i class="fas fa-check"></i>
-                                <span>Sustainable & ethical sourcing</span>
+                                <span>Evidence-based information</span>
                             </div>
                         </div>
                         <button class="btn btn--primary notify-btn">Notify Me When Available</button>
@@ -236,7 +154,7 @@
             <div class="container">
                 <div class="newsletter__content">
                     <h2 class="newsletter__title">Stay Updated with Premium Health Insights</h2>
-                    <p class="newsletter__description">Join our exclusive community and receive weekly wellness tips, expert advice, and early access to our premium products.</p>
+                    <p class="newsletter__description">Join our community and receive weekly wellness tips, expert advice, and early access to our premium resources.</p>
                     <form class="newsletter__form">
                         <div class="form__group">
                             <input type="email" placeholder="Enter your email address" class="form__input" required>
@@ -256,7 +174,7 @@
                 <div class="footer__section">
                     <div class="footer__brand">
                         <div class="footer__logo">
-                            <img src="assets/logo.png" alt="My Healthy Health Logo" class="footer__logo-img">
+                            <img src="Logo.jpg" alt="My Healthy Health Logo" class="footer__logo-img">
                         </div>
                         <h3 class="footer__brand-text">My Healthy Health</h3>
                         <p class="footer__description">Empowering your journey to optimal health with premium insights and carefully curated wellness solutions.</p>
@@ -268,7 +186,7 @@
                     <ul class="footer__links">
                         <li><a href="#about" class="footer__link">About Us</a></li>
                         <li><a href="#blog" class="footer__link">Health Blog</a></li>
-                        <li><a href="#products" class="footer__link">Products</a></li>
+                        <li><a href="#resources" class="footer__link">Resources</a></li>
                         <li><a href="#contact" class="footer__link">Contact</a></li>
                     </ul>
                 </div>
@@ -318,7 +236,6 @@
         </div>
     </footer>
 
-    <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

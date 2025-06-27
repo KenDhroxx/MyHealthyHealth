@@ -94,6 +94,9 @@ body {
   color: var(--gray-800);
   background-color: var(--white);
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 img {
@@ -636,6 +639,7 @@ ul {
   background: var(--gray-900);
   color: var(--white);
   padding: var(--spacing-5xl) 0 var(--spacing-xl);
+  margin-top: auto;
 }
 
 .footer__content {
@@ -731,6 +735,8 @@ ul {
   align-items: center;
   padding-top: var(--spacing-xl);
   border-top: 1px solid var(--gray-800);
+  margin-bottom: 0;
+  padding-bottom: var(--spacing-lg);
 }
 
 .footer__copyright {
@@ -971,4 +977,53 @@ ul {
   .hero__buttons {
     flex-direction: column;
   }
+}
+
+/* Remove default margins and ensure full height */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Make sure the page takes full height */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Make main content grow to fill available space */
+main {
+  flex: 1;
+}
+
+/* Ensure footer sticks to bottom */
+.footer {
+  margin-top: auto;
+  padding: var(--spacing-4xl) 0 0; /* Remove bottom padding */
+}
+
+/* Remove any bottom margins from footer content */
+.footer__bottom {
+  margin-bottom: 0;
+  padding-bottom: var(--spacing-lg); /* Add controlled bottom padding */
+}
+
+/* Alternative approach - if the above doesn't work, try this: */
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: auto;
+}
+
+/* Remove any default margins from the last elements */
+.footer * {
+  margin-bottom: 0;
+}
+
+.footer__copyright,
+.footer__legal {
+  margin-bottom: 0;
 }
