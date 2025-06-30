@@ -219,6 +219,22 @@ ul {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.3s ease;
+}
+
+.nav__brand:hover {
+  opacity: 0.8;
+}
+
+.nav__brand .nav__logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav__brand .nav__brand-text {
+  color: inherit;
 }
 
 .nav__logo-img {
